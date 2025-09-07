@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Тренировка: {{ deck.name }}{% endblock %}
+{% block content %}
+<h2>Тренировка: {{ deck.name }}</h2>
+<div class="card p-3">
+  <p class="lead">Переведите слово: <strong>{{ card.term }}</strong></p>
+  {% if card.image_url %}
+    <img src="{{ card.image_url }}" class="img-fluid mb-2" alt="image">
+  {% endif %}
+  <form method="post" action="{% url 'vocab:check_answer' deck.id %}">
+    {% csrf_token %}
+    <input type="text" name="answer" class="form-control" placeholder="Ваш перевод" required>
+    <button class="btn btn-success mt-2">Проверить</button>
+  </form>
+  {% if card.example %}<small class="text-muted">Пример: {{ card.example }}</small>{% endif %}
+</div>
+{% endblock %}

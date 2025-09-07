@@ -1,0 +1,4 @@
+Django>=5.0,<5.2
+pytz
+sqlparse
+pylint>=3.0

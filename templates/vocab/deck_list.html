@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Колоды{% endblock %}
+{% block content %}
+<h2>Колоды</h2>
+
+<div class="row">
+  {% for deck in decks %}
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ deck.name }}</h5>
+          <p class="card-text">Карточек: {{ deck.cards.count }}</p>
+          <a class="btn btn-sm btn-primary" href="{% url 'vocab:study' deck.id %}">Тренироваться</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>Пока нет колод. Добавьте карточку или загрузите CSV.</p>
+  {% endfor %}
+</div>
+{% endblock %}

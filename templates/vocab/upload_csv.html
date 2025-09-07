@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Загрузка CSV{% endblock %}
+{% block content %}
+<h2>Загрузка карточек из CSV</h2>
+<form method="post" enctype="multipart/form-data" class="card p-3">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-primary">Загрузить</button>
+</form>
+<div class="mt-3">
+  <details>
+    <summary>Пример CSV</summary>
+<pre>term,translation,example,image_url,deck
+cat,кот,The cat sleeps,,Animals
+run,бежать,Run fast!,,</pre>
+  </details>
+</div>
+{% endblock %}

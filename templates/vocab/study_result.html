@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Результат{% endblock %}
+{% block content %}
+<div class="card p-3">
+  {% if is_ok %}
+    <h4 class="text-success">Верно!</h4>
+  {% else %}
+    <h4 class="text-danger">Почти. Правильный ответ: "{{ card.translation }}"</h4>
+  {% endif %}
+  <p>Ваш ответ: <em>{{ user_answer }}</em></p>
+  <a class="btn btn-outline-primary" href="{% url 'vocab:study' deck.id %}">Следующая карточка</a>
+  <a class="btn btn-link" href="{% url 'vocab:deck_list' %}">К списку колод</a>
+</div>
+{% endblock %}
